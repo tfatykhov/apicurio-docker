@@ -19,10 +19,13 @@ RUN groupadd -r apicurio -g 1001 \
     && chown -R apicurio:apicurio /opt/apicurio-studio/
 
 USER 1001
-RUN unzip  /opt/apicurio-studio/apicurio-studio-$RELEASE_VERSION-quickstart.zip \
-    && rm /opt/apicurio-studio/apicurio-studio-$RELEASE_VERSION-quickstart.zip
+RUN unzip  /opt/apicurio-studio/apicurio-studio-${RELEASE_VERSION}-quickstart.zip \
+    && rm /opt/apicurio-studio/apicurio-studio-${RELEASE_VERSION}-quickstart.zip \
+    && mv /opt/apicurio-studio/apicurio-studio-${RELEASE_VERSION} /opt/apicurio-studio/tomcat \
+    && find /opt/ -name '*' \
+    && chmod 755 /opt/apicurio-studio/tomcat/bin/catalina.sh
 
 EXPOSE 8080
 
-ENTRYPOINT ["/opt/apicurio-studio/apicurio-studio-$RELEASE_VERSION/bin/catalina.sh"]
+ENTRYPOINT ["/opt/apicurio-studio/tomcat/bin/catalina.sh"]
 CMD ["run"]
