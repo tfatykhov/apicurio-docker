@@ -8,7 +8,7 @@ RUN yum install -y \
 
 WORKDIR /opt/apicurio-studio
 
-ENV RELEASE_VERSION 0.1.2
+ENV RELEASE_VERSION 0.1.3
 ENV RELEASE_PATH https://github.com/Apicurio/apicurio-studio/releases/download/v$RELEASE_VERSION/apicurio-studio-$RELEASE_VERSION-quickstart.zip
 
 
