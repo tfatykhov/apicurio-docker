@@ -1,2 +1,2 @@
 # apicurio-docker
-Docker images for apicurio.
+Docker file and README.md for apicurio studio
