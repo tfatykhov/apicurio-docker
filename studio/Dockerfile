@@ -21,11 +21,11 @@ RUN groupadd -r apicurio -g 1001 \
 USER 1001
 RUN unzip  /opt/apicurio-studio/apicurio-studio-${RELEASE_VERSION}-quickstart.zip \
     && rm /opt/apicurio-studio/apicurio-studio-${RELEASE_VERSION}-quickstart.zip \
-    && mv /opt/apicurio-studio/apicurio-studio-${RELEASE_VERSION} /opt/apicurio-studio/tomcat \
+    && mv /opt/apicurio-studio/apicurio-studio-${RELEASE_VERSION} /opt/apicurio-studio/wildfly \
     && find /opt/ -name '*' \
-    && chmod 755 /opt/apicurio-studio/tomcat/bin/catalina.sh
+    && chmod 755 /opt/apicurio-studio/wildfly/bin/standalone.sh
 
 EXPOSE 8080
 
-ENTRYPOINT ["/opt/apicurio-studio/tomcat/bin/catalina.sh"]
-CMD ["run"]
+ENTRYPOINT ["/opt/apicurio-studio/wildfly/bin/standalone.sh"]
+CMD ["-c", "standalone-apicurio.xml", "-b", "0.0.0.0"]
