@@ -1,0 +1,13 @@
+version: '2.3' 
+
+services:
+  apicurio:
+    image: apicurio/apicurio-studio:latest
+    restart: always
+    ports:
+      - "8088:8080"
+      - "8443:8443"
+    environment:
+      HTTP_PROXY: 'http://zsproxy.fanniemae.com:9480'
+      HTTPS_PROXY: 'http://zsproxy.fanniemae.com:9480'
+      NO_PROXY: 'localhost,10.108.0.66,127.0.0.1,autoyast,*.fanniemae.com,169.254.169.254,packages.us-east-1.amazonaws.com,packages.us-west-1.amazonaws.com,packages.us-west-2.amazonaws.com,s3.amazonaws.com'
